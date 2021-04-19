@@ -1,6 +1,7 @@
 /**********************************************************************************
  *
- *  This block is complete: a good reference for other blocks!
+ *  TODO:   Modify update() so that when a row clears, all hanging blocks are 
+            pulled down by gravity
  *              
  **********************************************************************************/
 import java.awt.Color;
