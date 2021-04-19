@@ -47,13 +47,7 @@ public class TetraSet {
         for (int i = 0; i < gridY; i++)
             if (fullRow(i))
                 for (int j = 0; j < gridX; j++)
-                    C[i][j] = null;         
-
-        // eliminate all blocks in a column if the column is full
-        for (int j = 0; j < gridX; j++)
-            if (fullCol(j))
-                for (int i = 0; i < gridY; i++)
-                    C[i][j] = null;     
+                    C[i][j] = null;  
     } 
     
     private boolean fullRow(int i) {
@@ -61,16 +55,7 @@ public class TetraSet {
             if (C[i][j] == null)
                 return false;
         return true;
-    }
-
-    private boolean fullCol(int j) {
-        for (int i = 0; i < gridY; i++) {
-            if (C[i][j] == null)
-                return false;
-        } 
-        return true;
-    }
-    
+    }    
 
     //******************************************************************
     //  ACCESSORS
