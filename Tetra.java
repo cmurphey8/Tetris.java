@@ -5,29 +5,11 @@ import java.time.Clock;
  *  Execution:    java Tetra
  *  Dependencies: StdDraw.java Shape.java Tetroid*.java
  * 
- *  Usage:  Pick up a copy of one of the tetroid templates by clicking on it;
- *          Rotate a picked up object with space bar;
- *          Set a picked up object by clicking in the black and grey grid;
+ *  Usage:  Move blocks with keys: a (left), a (right), s (down), w (rotate), space (slam down)
  * 
- *  PART 1: Update all remaining Tetroid*.java files (L, T, Z) so that all tetroids
- *          initialize and rotate properly
+ *  GOAL: Complete the TetraSet Class -> complete the reduce() method
  *
- *  PART 2: Complete the overLaps method in Shape.java to prevent blocks 
- *          from stacking on top of one another
- * 
- *  DISCUSSION: Complete the form @ 
- *              (1) What is the significance of our abstract parent class not having a constructor?
- * 
- *              (2) What is the significance of the abstract methods in our parent class?
- * 
- *              (3) What do you notice about the roles of our parent and child classes
- *                  for this problem compared to the Galaxy problem last week?
- * 
- *              (4) What are some conditions to look out for where an abstract parent class
- *                  might be preferable to a standard parent class?
- * 
- *  EXTRA PRACTICE: Remove the abstract keyword from the Shape parent class 
- *                  and Redesign the program around this update
+ *  EXTRA PRACTICE: Find a suitable end-game procedure in Tetra.java if a column of blocks reaches the top of the grid
  * 
  **************************************************************************************************/
 
