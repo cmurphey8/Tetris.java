@@ -1,7 +1,6 @@
 /**********************************************************************************
  *
- *  TODO:   Modify update() so that when a row clears, all hanging blocks are 
-            pulled down by gravity
+ *  TODO:   Complete the reduce() method below!
  *              
  **********************************************************************************/
 import java.awt.Color;
@@ -44,11 +43,8 @@ public class TetraSet {
     }
 
     private void reduce() {
-        // eliminate all blocks in a row if the row is full
-        for (int i = 0; i < gridY; i++)
-            if (fullRow(i))
-                for (int j = 0; j < gridX; j++)
-                    C[i][j] = null;  
+        // 1. eliminate all blocks in a row if the row is full
+        // 2. if a row is cleared, pull all hanging blocks down by one row 
     } 
     
     private boolean fullRow(int i) {
