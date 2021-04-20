@@ -19,7 +19,7 @@
  *  (4) Making only this one change, could we set the global templates array in Display to type TetraSet? 
  *          -> Why or why not?
  * 
- *  (5) Suppose we were determined to change Shape from abstract to interface, 
+ *  (5) Suppose we were determined to change our Shape class from abstract to interface, 
  *      but we did not want to add any more methods to our Tetroids. How could we accomplish this?
  * 
  *  EXTRA PRACTICE: Find a suitable end-game procedure to break out of the while(true) loop below!
