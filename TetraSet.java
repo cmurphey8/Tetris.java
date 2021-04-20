@@ -43,11 +43,8 @@ public class TetraSet {
     }
 
     private void reduce() {
-        // eliminate all blocks in a row if the row is full
-        for (int i = 0; i < gridY; i++)
-            if (fullRow(i))
-                for (int j = 0; j < gridX; j++)
-                    C[i][j] = null;         
+        // 1. eliminate all blocks in a row if a row is full
+        // 2. pull all hanging blocks down by 1 row
     } 
     
     private boolean fullRow(int i) {
