@@ -8,7 +8,7 @@ import java.awt.Color;
 public class TetraSet {
     private int gridX;
     private int gridY;
-    private Color[][] C;     // xy Color for squares
+    private Color[][] C;     // yx Color for squares
 
     //******************************************************************
     //  CONSTRUCTORS
