@@ -7,9 +7,11 @@ import java.time.Clock;
  * 
  *  Usage:  Move blocks with keys: a (left), a (right), s (down), w (rotate), space (slam down)
  * 
- *  GOAL: Complete the TetraSet Class -> complete the reduce() method
+ *  PART 1: Complete the TetraSet Class -> complete the reduce() method
  *
- *  EXTRA PRACTICE: Find a suitable end-game procedure in Tetra.java if a column of blocks reaches the top of the grid
+ *  PART 2: Select next block at random instead of in order
+ *
+ *  EXTRA PRACTICE: provide a next block preview via background highlighting of the block that's up next
  * 
  **************************************************************************************************/
 
@@ -52,7 +54,7 @@ public class Tetra {
                 k = (k + 1) % 7;
             }
 
-            // process key entries if objct IS selected
+            // process key entries if object IS selected
             if (StdDraw.hasNextKeyTyped() && !released) {
                 switch (StdDraw.nextKeyTyped()) {
                     case ' ':    // space bar >> slam down
@@ -73,7 +75,7 @@ public class Tetra {
                 }
             }
 
-            // follow the mouse while an object is selected
+            // if block IN play: drop on-time and release if floored
             if (!released) {
                 drawBackground(); 
                 tetroid.draw();
@@ -89,30 +91,19 @@ public class Tetra {
         } // end of while
     } 
 
-    // process mouse clicks if NO object is selected
+    // reset block if floored
     public static boolean unselected() {
         blob.update(tetroid);
         tetroid = null;
         return true;
     }
 
-    // init a new block IF no block in play
+    // reinit block IF no block in play
     public static boolean select(int k) {
         // init a new block of type k, centered at the top of the grid
         initNew(k, gridX / 2, gridY - 2);
         StdDraw.show();
         return false;
-    }
-
-    public static int checkTemplates(double x, double y) {
-        // check if a template was clicked on
-        int k = -1;
-        for (int i = 0; i < templates.length; i++) {
-            if (templates[i].clicked(Math.floor(x), Math.floor(y))) {
-                k = i;
-            }
-        }
-        return k;
     }
 
     public static void initNew(int k, double x, double y) {
