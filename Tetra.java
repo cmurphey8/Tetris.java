@@ -1,5 +1,3 @@
-import java.time.Clock;
-
 /**************************************************************************************************
  *  Compilation:  javac Tetra.java
  *  Execution:    java Tetra
