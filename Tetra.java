@@ -7,9 +7,11 @@
  * 
  *  PART 1: Complete the TetraSet Class -> complete the reduce() method
  *
- *  PART 2: Select next block at random instead of in order, per the NES randomizer @ https://simon.lc/the-history-of-tetris-randomizers
- *              NES - 1-piece history: pick a piece at random, if it matches the last piece, draw again - once 
- *                  - if redraw is the same piece, just go with it!
+ *  PART 2: Select next block at random instead of in order, per the NES randomizer 
+ *              @ https://simon.lc/the-history-of-tetris-randomizers
+ * 
+ *          NES -> 1-piece history: pick a piece at random, if it matches the last piece, draw again - *once*
+ *              -> *if redraw is the same piece, just go with it!*
  *
  *  EXTRA PRACTICE: Find a suitable end-game procedure if a column cannot be filled any higher
  * 
@@ -51,7 +53,7 @@ public class Tetra {
                         tetroid.move(-1, blob, gridX, gridY);
                         break;
                     case 'w':    // w >> rotate
-                        tetroid.rotate(gridX, gridY);
+                        tetroid.rotate(gridX, gridY, blob);
                         break;
                     case 'd':    // d >> move right
                         tetroid.move(1, blob, gridX, gridY);

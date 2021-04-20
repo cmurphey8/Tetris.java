@@ -1,7 +1,6 @@
 /**********************************************************************************
  *
- *  Part 2: Complete the overLaps() method to prevent blocks from 
- *          overlapping one another
+ *  Our Shape class is complete -> Nothing to do here!
  *              
  **********************************************************************************/
 
@@ -123,18 +122,24 @@ public abstract class Shape {
         else hover(x[0] - xDir, y[0]);
     }
 
-    public void rotate(int gridX, int gridY) {
+    public void rotate(int gridX, int gridY, TetraSet blob) {
         int tmp = getRotation();
 
         rotate();
         hover(x[0], y[0]);
         x = getX();
         y = getY();
-        if (!inBounds(x[0], y[0], gridX, gridY)) {
-            while(getRotation() != tmp)
-                rotate();
-            hover(x[0], y[0]);
+        if (inBounds(x[0], y[0], gridX, gridY)) {
+            if (overLaps(x[0], y[0], blob)){
+                while(getRotation() != tmp)
+                    rotate();
+                hover(x[0], y[0]);
+            }
+            return;    
         }
+        while(getRotation() != tmp)
+            rotate();
+        hover(x[0], y[0]);
     }
 
     public void swap(int i, int j) {

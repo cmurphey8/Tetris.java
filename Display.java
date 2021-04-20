@@ -1,16 +1,7 @@
 /**************************************************************************************************
- *  Compilation:  javac Tetra.java
- *  Execution:    java Tetra
- *  Dependencies: StdDraw.java Shape.java Tetroid*.java
- * 
- *  Usage:  Move blocks with keys: a (left), a (right), s (down), w (rotate), space (slam down)
- * 
- *  PART 1: Complete the TetraSet Class -> complete the reduce() method
  *
- *  PART 2: Select next block at random instead of in order
- *
- *  EXTRA PRACTICE: Find a suitable end-game procedure if a column cannot be filled any higher
- * 
+ *  Class to draw the background @ each frame -> Nothing to do here!
+ *  
  **************************************************************************************************/
 
 public class Display { 

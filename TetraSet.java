@@ -1,6 +1,6 @@
 /**********************************************************************************
  *
- *  This block is complete: a good reference for other blocks!
+ *  A class to store all placed box in one object -> Nothing to do here!
  *              
  **********************************************************************************/
 import java.awt.Color;
@@ -8,7 +8,7 @@ import java.awt.Color;
 public class TetraSet {
     private int gridX;
     private int gridY;
-    private Color[][] C;     // xy Color for squares
+    private Color[][] C;     // yx Color for squares
 
     //******************************************************************
     //  CONSTRUCTORS
@@ -56,13 +56,6 @@ public class TetraSet {
                 return false;
         return true;
     }    
-
-    private boolean fullCol(int j) {
-        for (int i = 0; i < gridY; i++)
-            if (C[i][j] == null)
-                return false;
-        return true;
-    }   
 
     //******************************************************************
     //  ACCESSORS

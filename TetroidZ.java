@@ -1,6 +1,6 @@
 /**********************************************************************************
  *
- *  TODO: Update Hover() to accomodate the Z tetroid block shape
+ *  This block is complete: a good reference for other blocks!
  *              
  **********************************************************************************/
 import java.awt.Color;
