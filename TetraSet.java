@@ -1,6 +1,6 @@
 /**********************************************************************************
  *
- *  A class to store all placed box in one object -> Nothing to do here!
+ *  PART 1: Complete the TetraSet Class -> complete the reduce() method
  *              
  **********************************************************************************/
 import java.awt.Color;
