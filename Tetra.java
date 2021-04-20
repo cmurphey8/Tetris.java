@@ -7,7 +7,7 @@
  * 
  *  PART 1: Complete the TetraSet Class -> complete the reduce() method
  *
- *  PART 2: Select next block at random instead of in order
+ *  PART 2: Select next block at random instead of in order, per the NES randomizer @ https://simon.lc/the-history-of-tetris-randomizers
  *
  *  EXTRA PRACTICE: Find a suitable end-game procedure if a column cannot be filled any higher
  * 
