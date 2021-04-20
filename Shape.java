@@ -7,11 +7,11 @@
 import java.awt.Color;
 
 // abstract classes do not get constructors!
-public abstract class Shape {
+public abstract class Shape extends TetraSet {
 
-    private static double[] x;
-    private static double[] y;
-    private static Color C;
+    private double[] x;
+    private double[] y;
+    private Color C;
     
     public void draw() {
         x = getX();
@@ -39,25 +39,24 @@ public abstract class Shape {
         StdDraw.square(x + 0.5, y + 0.5, 0.3);   
     }
 
-    public boolean overLaps(double x0, double y0, TetraSet blob) {
+    public boolean overLaps(double x0, double y0) {
         // update x0, y0 of tetroid
         hover(x0, y0);
 
         // gather elements to compare
         x = getX();
         y = getY();
-        Color[][] cB = blob.getC();
 
         // return true if tetroid indexes are null in the blob Color[][] array
         for (int i = 0; i < 4; i++)
-            if (cB[(int) y[i]][(int) x[i]] != null) 
+            if (superC[(int) y[i]][(int) x[i]] != null) 
                 return true;
 
         // else return false                         
         return false;
     }
 
-    public boolean inBounds(double x0, double y0, int gridX, int gridY) {
+    public boolean inBounds(double x0, double y0) {
         // update x0, y0 of tetroid
         hover(x0, y0);
 
@@ -89,16 +88,16 @@ public abstract class Shape {
         return false;
     }
 
-    public void slam(TetraSet blob, int gridX, int gridY) {
-        while (drop(blob, gridX, gridY)) {}
+    public void slam() {
+        while (drop()) {}
     }
 
-    public boolean drop(TetraSet blob, int gridX, int gridY) {
+    public boolean drop() {
         x = getX();
         y = getY();
         int yTest = (int) y[0] - 1;
-        if (inBounds(x[0], yTest, gridX, gridY)) {
-            if (overLaps(x[0], yTest, blob)){
+        if (inBounds(x[0], yTest)) {
+            if (overLaps(x[0], yTest)){
                 hover(x[0], y[0] + 1);
                 return false;
             }    
@@ -110,27 +109,27 @@ public abstract class Shape {
         return true;
     }
 
-    public void move(int xDir, TetraSet blob, int gridX, int gridY) {
+    public void move(int xDir) {
         x = getX();
         y = getY();
         int xTest = (int) x[0] + xDir;
-        if (inBounds(xTest, y[0], gridX, gridY)) {
-            if (overLaps(xTest, y[0], blob)){
+        if (inBounds(xTest, y[0])) {
+            if (overLaps(xTest, y[0])){
                 hover(x[0] - xDir, y[0]);
             }    
         }
         else hover(x[0] - xDir, y[0]);
     }
 
-    public void rotate(int gridX, int gridY, TetraSet blob) {
+    public void rotateSuper() {
         int tmp = getRotation();
 
         rotate();
         hover(x[0], y[0]);
         x = getX();
         y = getY();
-        if (inBounds(x[0], y[0], gridX, gridY)) {
-            if (overLaps(x[0], y[0], blob)){
+        if (inBounds(x[0], y[0])) {
+            if (overLaps(x[0], y[0])){
                 while(getRotation() != tmp)
                     rotate();
                 hover(x[0], y[0]);
@@ -140,19 +139,6 @@ public abstract class Shape {
         while(getRotation() != tmp)
             rotate();
         hover(x[0], y[0]);
-    }
-
-    public void swap(int i, int j) {
-        x = getX();
-        y = getY();
-        double tmpX = x[i];
-        double tmpY = y[i];
-        
-        x[i] = x[j];
-        x[j] = tmpX;
-
-        y[i] = y[j];
-        y[j] = tmpY;
     }
 
     public abstract void hover(double x, double y);

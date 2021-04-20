@@ -1,24 +1,26 @@
 /**********************************************************************************
  *
- *  PART 1: Complete the TetraSet Class -> complete the reduce() method
+ *  A class to store all placed box in one object -> Nothing to do here!
  *              
  **********************************************************************************/
 import java.awt.Color;
 
 public class TetraSet {
-    private int gridX;
-    private int gridY;
-    private Color[][] C;     // yx Color for squares
+    protected static int gridX;
+    protected static int gridY;
+    protected static Color[][] superC;     // yx Color for squares
 
     //******************************************************************
     //  CONSTRUCTORS
     //*******************************************************************/
 
-    public TetraSet(int gridX, int gridY) {
-        this.gridX = gridX;
-        this.gridY = gridY; 
-        C = new Color[gridY][gridX];
+    public TetraSet(int x, int y) {
+        gridX = x;
+        gridY = y; 
+        superC = new Color[gridY][gridX];
     }
+
+    public TetraSet() {}
 
     //******************************************************************
     //  MUTATORS
@@ -32,7 +34,7 @@ public class TetraSet {
 
         // update background with this set piece
         for (int i = 0; i < 4; i++) {
-            C[(int) yT[i]][(int) xT[i]] = cT;
+            superC[(int) yT[i]][(int) xT[i]] = cT;
         }
 
         // reduce if blocks span the grid
@@ -43,13 +45,16 @@ public class TetraSet {
     }
 
     private void reduce() {
-        // 1. eliminate all blocks in a row if a row is full
-        // 2. pull all hanging blocks down by 1 row
+        // eliminate all blocks in a row if the row is full
+        for (int i = 0; i < gridY; i++)
+            if (fullRow(i))
+                for (int j = 0; j < gridX; j++)
+                    superC[i][j] = null;         
     } 
     
     private boolean fullRow(int i) {
         for (int j = 0; j < gridX; j++)
-            if (C[i][j] == null)
+            if (superC[i][j] == null)
                 return false;
         return true;
     }    
@@ -61,11 +66,11 @@ public class TetraSet {
     public void draw() {
         for (int i = 0; i < gridY; i++)
             for (int j = 0; j < gridX; j++)    
-                if (C[i][j] != null) drawSquare(i, j); 
+                if (superC[i][j] != null) drawSquare(i, j); 
     }
 
     public void drawSquare(int y, int x) {
-        StdDraw.setPenColor(C[y][x]);
+        StdDraw.setPenColor(superC[y][x]);
         StdDraw.filledSquare(x + 0.5, y + 0.5, 0.5); 
 
         StdDraw.setPenColor(StdDraw.BLACK);
@@ -74,14 +79,10 @@ public class TetraSet {
         StdDraw.line(x, y, x+1, y+1);
         StdDraw.line(x, y+1, x+1, y);
         
-        StdDraw.setPenColor(C[y][x]);
+        StdDraw.setPenColor(superC[y][x]);
         StdDraw.filledSquare(x + 0.5, y + 0.5, 0.3);
 
         StdDraw.setPenColor(StdDraw.BLACK);
         StdDraw.square(x + 0.5, y + 0.5, 0.3);   
-    }
-
-    public Color[][] getC() {
-        return C;
     }
 }

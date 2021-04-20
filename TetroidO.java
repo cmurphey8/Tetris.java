@@ -8,8 +8,8 @@ import java.awt.Color;
 public class TetroidO extends Shape {
     private double[] x;         // x position for blocks
     private double[] y;         // y position for blocks
-    private int rotation = 1;
-    private final Color C = StdDraw.YELLOW;   // this tetroid color
+    private static final int rotation = 1;
+    private static final Color C = StdDraw.YELLOW;   // this tetroid color
     // no rotation needed for this block
 
     //******************************************************************
@@ -46,10 +46,10 @@ public class TetroidO extends Shape {
     }
 
     public Color getC(){
-        return this.C;
+        return C;
     }
     
     public int getRotation() { 
-        return this.rotation;
+        return rotation;
     }
 }

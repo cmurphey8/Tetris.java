@@ -4,19 +4,14 @@
  *  
  **************************************************************************************************/
 
-public class Display { 
-    public int gridX;
-    public int gridY;
+public class Display extends TetraSet { 
+    private final int nextBox = 5; 
+    private final int buffer = 1;
+    private final int scale = 20;
 
-    public final int nextBox = 5; 
-    public final int buffer = 1;
-    public final int scale = 20;
+    private TetraSet[] templates;
 
-    public Shape[] templates;
-
-    public Display(int gridX, int gridY, TetraSet blob) {
-        this.gridX = gridX;
-        this.gridY = gridY;    
+    public Display() {   
         templates = new Shape[7];
         
         // initialize StdDraw elements
@@ -25,12 +20,12 @@ public class Display {
         StdDraw.setXscale(-buffer, gridX + nextBox + 2 * buffer);
         StdDraw.setYscale(-buffer, gridY + buffer);
 
-        init(blob);
+        init();
     }
 
-    public void init(TetraSet blob) {
+    public void init() {
         initTemplates();
-        drawBackground(blob);
+        drawBackground();
         StdDraw.show();
     }
 
@@ -46,10 +41,10 @@ public class Display {
     }
 
     // draw the frame, templates, and all existing tetroid blocks
-    public void drawBackground(TetraSet blob) {
+    public void drawBackground() {
         drawGameBoard();
         drawNext();
-        blob.draw();
+        draw();
     }
 
     public void drawGameBoard() {

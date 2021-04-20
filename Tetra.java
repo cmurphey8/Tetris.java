@@ -5,15 +5,24 @@
  * 
  *  Usage:  Move blocks with keys: a (left), a (right), s (down), w (rotate), space (slam down)
  * 
- *  PART 1: Complete the TetraSet Class -> complete the reduce() method
- *
- *  PART 2: Select next block at random instead of in order, per the NES randomizer 
- *              @ https://simon.lc/the-history-of-tetris-randomizers
+ *  GOAL: Complete the TetraSet Class -> complete the reduce() method
  * 
- *          NES -> 1-piece history: pick a piece at random, if it matches the last piece, draw again - *once*
- *              -> *if redraw is the same piece, just go with it!*
+ *  Discussion: 
+ * 
+ *  (1) What is the significance of the TetraSet class elements being declared protected and static?
+ * 
+ *  (2) What do we gain from having our Shape and Display classes extend TetraSet? 
+ * 
+ *  (3) Making only this one change, could we set the global tetroid object in Tetra to type TetraSet? 
+ *          -> Why or why not? 
  *
- *  EXTRA PRACTICE: Find a suitable end-game procedure if a column cannot be filled any higher
+ *  (4) Making only this one change, could we set the global templates array in Display to type TetraSet? 
+ *          -> Why or why not?
+ * 
+ *  (5) Suppose we were determined to change Shape from abstract to interface, 
+ *      but we did not want to add any more methods to our Tetroids. How could we accomplish this?
+ * 
+ *  EXTRA PRACTICE: Find a suitable end-game procedure to break out of the while(true) loop below!
  * 
  **************************************************************************************************/
 
@@ -25,11 +34,10 @@ public class Tetra {
 
     // global objects
     public static Shape tetroid;
-    public static Shape[] templates;
     public static TetraSet blob = new TetraSet(gridX, gridY);
-    public static Display background = new Display(gridX, gridY, blob);
+    public static Display background = new Display();
 
-    // global tracker
+    // global block select
     public static int nextBlock;
 
     public static void main(String[] args) {    
@@ -43,33 +51,33 @@ public class Tetra {
                 inPlay = select(nextBlock());
             }
 
-            // process key entries if object IS selected
+            // process key entries if object is in play
             if (StdDraw.hasNextKeyTyped() && inPlay) {
                 switch (StdDraw.nextKeyTyped()) {
                     case ' ':    // space bar >> slam down
-                        tetroid.slam(blob, gridX, gridY);
+                        tetroid.slam();
                         break;
                     case 'a':    // a >> move left
-                        tetroid.move(-1, blob, gridX, gridY);
+                        tetroid.move(-1);
                         break;
                     case 'w':    // w >> rotate
-                        tetroid.rotate(gridX, gridY, blob);
+                        tetroid.rotateSuper();
                         break;
                     case 'd':    // d >> move right
-                        tetroid.move(1, blob, gridX, gridY);
+                        tetroid.move(1);
                         break;
                     case 's':    // s >> speed down
-                        tetroid.drop(blob, gridX, gridY);
+                        tetroid.drop();
                         break;
                 }
             }
 
-            // if block IN play: drop on-time and release if floored
+            // if block IN play: drop on-time; remove from play if floored
             if (inPlay) {
-                background.drawBackground(blob); 
+                background.drawBackground(); 
                 tetroid.draw();
                 if (timeDelta > 500) {
-                    if (!tetroid.drop(blob, gridX, gridY)) {
+                    if (!tetroid.drop()) {
                         inPlay = unselect();
                     }
                     time0 = System.currentTimeMillis();
@@ -80,21 +88,21 @@ public class Tetra {
         } // end of while
     } 
 
-    // reset block if floored
+    // remove block from play if floored
     public static boolean unselect() {
         blob.update(tetroid);
         tetroid = null;
         return false;
     }
 
-    // reinit block IF no block in play
+    // reinit block if no block in play
     public static boolean select(int k) {
         // init a new block of type k, centered at the top of the grid
         initNew(k, gridX / 2, gridY - 2);
         return true;
     }
 
-    // reinit block IF no block in play
+    // select the next block to play
     public static int nextBlock() {
         nextBlock = (nextBlock + 1) % 7;
         return nextBlock;

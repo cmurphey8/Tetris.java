@@ -9,8 +9,8 @@ public class TetroidI extends Shape {
     private double[] x;         // x position for blocks
     private double[] y;         // y position for blocks
     private int rotation;       // 2 phases total
-    private int phases = 2;
-    private final Color C = StdDraw.CYAN;     // this tetroid color
+    private static final int phases = 2;
+    private static final Color C = StdDraw.CYAN;     // this tetroid color
 
     //******************************************************************
     //  CONSTRUCTORS
@@ -61,7 +61,7 @@ public class TetroidI extends Shape {
     }
 
     public Color getC(){
-        return this.C;
+        return C;
     }
 
     public int getRotation() { 
