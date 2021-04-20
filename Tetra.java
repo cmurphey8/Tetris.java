@@ -5,7 +5,7 @@
  * 
  *  Usage:  Move blocks with keys: a (left), a (right), s (down), w (rotate), space (slam down)
  * 
- *  GOAL: Complete the TetraSet Class -> complete the reduce() method
+ *  GOAL: Complete the TetraSet Class -> complete the reduce() and fullRow() methods
  * 
  *  Discussion: 
  * 
