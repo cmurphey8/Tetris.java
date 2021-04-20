@@ -3,7 +3,7 @@
  *  Execution:    java Tetra
  *  Dependencies: StdDraw.java Shape.java Tetroid*.java
  * 
- *  Usage:  Move blocks with keys: a (left), a (right), s (down), w (rotate), space (slam down)
+ *  Usage:  Move blocks with keys: a (left), a (right), s (speed down), w (rotate), space (slam down)
  * 
  *  PART 1: Complete the TetraSet Class -> complete the reduce() method
  *
