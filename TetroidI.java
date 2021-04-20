@@ -33,16 +33,14 @@ public class TetroidI extends Shape {
                 this.x[i] = x + i;
                 this.y[i] = y;                    
             }
+            // swap(0, 1);
         }
         else {
             for (int i = 0; i < 4; i++) {
                 this.x[i] = x;
                 this.y[i] = y + i;    
             }
-        }
-
-        for (int i = 0; i < 4; i++) {
-            System.out.println(this.x[i] + " , " + this.y[i]);    
+            // swap(0,1);
         }
     }
 

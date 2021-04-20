@@ -1,6 +1,6 @@
 /**********************************************************************************
  *
- *  TODO:   Complete the reduce() method below!
+ *  This block is complete: a good reference for other blocks!
  *              
  **********************************************************************************/
 import java.awt.Color;
@@ -8,7 +8,7 @@ import java.awt.Color;
 public class TetraSet {
     private int gridX;
     private int gridY;
-    private Color[][] C;     // yx Color for squares
+    private Color[][] C;     // xy Color for squares
 
     //******************************************************************
     //  CONSTRUCTORS
@@ -43,8 +43,11 @@ public class TetraSet {
     }
 
     private void reduce() {
-        // 1. eliminate all blocks in a row if the row is full
-        // 2. if a row is cleared, pull all hanging blocks down by one row 
+        // eliminate all blocks in a row if the row is full
+        for (int i = 0; i < gridY; i++)
+            if (fullRow(i))
+                for (int j = 0; j < gridX; j++)
+                    C[i][j] = null;         
     } 
     
     private boolean fullRow(int i) {
@@ -53,6 +56,13 @@ public class TetraSet {
                 return false;
         return true;
     }    
+
+    private boolean fullCol(int j) {
+        for (int i = 0; i < gridY; i++)
+            if (C[i][j] == null)
+                return false;
+        return true;
+    }   
 
     //******************************************************************
     //  ACCESSORS

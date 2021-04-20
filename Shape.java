@@ -128,7 +128,6 @@ public abstract class Shape {
 
         rotate();
         hover(x[0], y[0]);
-
         x = getX();
         y = getY();
         if (!inBounds(x[0], y[0], gridX, gridY)) {
@@ -136,6 +135,19 @@ public abstract class Shape {
                 rotate();
             hover(x[0], y[0]);
         }
+    }
+
+    public void swap(int i, int j) {
+        x = getX();
+        y = getY();
+        double tmpX = x[i];
+        double tmpY = y[i];
+        
+        x[i] = x[j];
+        x[j] = tmpX;
+
+        y[i] = y[j];
+        y[j] = tmpY;
     }
 
     public abstract void hover(double x, double y);
