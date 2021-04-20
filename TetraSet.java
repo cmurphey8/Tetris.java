@@ -1,6 +1,6 @@
 /**********************************************************************************
  *
- *  A class to store all placed box in one object -> Nothing to do here!
+ *  GOAL: complete the reduce() and fullRow() methods below to upgrade our Tetris game!
  *              
  **********************************************************************************/
 import java.awt.Color;
@@ -44,19 +44,14 @@ public class TetraSet {
         draw();
     }
 
+    // (1) eliminate all blocks in a row if the row is full   
+    // (2) reduce all hanging blocks by one row
     private void reduce() {
-        // eliminate all blocks in a row if the row is full
-        for (int i = 0; i < gridY; i++)
-            if (fullRow(i))
-                for (int j = 0; j < gridX; j++)
-                    superC[i][j] = null;         
+            
     } 
     
+    // helper method: check if a row is full
     private boolean fullRow(int i) {
-        for (int j = 0; j < gridX; j++)
-            if (superC[i][j] == null)
-                return false;
-        return true;
     }    
 
     //******************************************************************
