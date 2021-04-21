@@ -47,7 +47,7 @@ public abstract class Shape extends TetraSet {
         x = getX();
         y = getY();
 
-        // return true if tetroid indexes are null in the blob Color[][] array
+        // return true if tetroid indexes occupied in the blob object of set pieces
         for (int i = 0; i < 4; i++)
             if (superC[(int) y[i]][(int) x[i]] != null) 
                 return true;
