@@ -9,7 +9,7 @@ public class Display extends TetraSet {
     private final int buffer = 1;
     private final int scale = 20;
 
-    private TetraSet[] templates;
+    private Shape[] templates;
 
     public Display() {   
         templates = new Shape[7];
