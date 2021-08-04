@@ -44,14 +44,16 @@ public class TetraSet {
         draw();
     }
 
+    // TODO:
     // (1) eliminate all blocks in a row if the row is full   
     // (2) reduce all hanging blocks by one row
     private void reduce() {
             
     } 
     
-    // helper method: check if a row is full
+    // TODO: check if a row is full
     private boolean fullRow(int i) {
+           return false;
     }    
 
     //******************************************************************
