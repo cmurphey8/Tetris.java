@@ -32,16 +32,16 @@ public class TetroidS extends Shape {
             for (int i = 0; i < 2; i++) {
                 this.x[i] = x + i;
                 this.y[i] = y;  
-                this.x[i + 2] = x + 1 + i;
-                this.y[i + 2] = y + 1;  
+                this.x[i + 2] = x - 1 + i;
+                this.y[i + 2] = y - 1;  
             }
         }
         else {
             for (int i = 0; i < 2; i++) {
                 this.x[i] = x;
                 this.y[i] = y + i;  
-                this.x[i + 2] = x - 1;
-                this.y[i + 2] = y + 1 + i;  
+                this.x[i + 2] = x + 1;
+                this.y[i + 2] = y - 1 + i;  
             }
         }
     }
