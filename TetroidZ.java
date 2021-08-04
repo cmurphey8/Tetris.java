@@ -30,9 +30,9 @@ public class TetroidZ extends Shape {
     public void hover(double x, double y) {
         if (rotation == 0) {
             for (int i = 0; i < 2; i++) {
-                this.x[i] = x + i;
+                this.x[i] = x - i;
                 this.y[i] = y;  
-                this.x[i + 2] = x + 1 + i;
+                this.x[i + 2] = x + 1 - i;
                 this.y[i + 2] = y - 1;  
             }
         }
@@ -40,8 +40,8 @@ public class TetroidZ extends Shape {
             for (int i = 0; i < 2; i++) {
                 this.x[i] = x;
                 this.y[i] = y + i;  
-                this.x[i + 2] = x + 1;
-                this.y[i + 2] = y + 1 + i;  
+                this.x[i + 2] = x - 1;
+                this.y[i + 2] = y - 1 + i;  
             }
         }
     }
