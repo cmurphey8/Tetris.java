@@ -31,13 +31,13 @@ public class Display extends TetraSet {
 
     public void initTemplates() {
         // initialize the templates array with all our tetroid block shapes
-        templates[0] = new TetroidI(gridX + buffer * 1.5, gridY - buffer * 3 / 2.0);
+        templates[0] = new TetroidI(gridX + buffer * 1.5 + 1, gridY - buffer * 3 / 2.0);
         templates[1] = new TetroidJ(gridX + buffer * 2, gridY - 4.5 * buffer);
-        templates[2] = new TetroidL(gridX + buffer * 2, gridY - 7.5 * buffer);
+        templates[2] = new TetroidL(gridX + buffer * 2 + 2, gridY - 7.5 * buffer);
         templates[3] = new TetroidO(gridX + buffer * 2.5, gridY - 10.5 * buffer);
-        templates[4] = new TetroidS(gridX + buffer * 2, gridY - 13.5 * buffer);
-        templates[5] = new TetroidT(gridX + buffer * 2, gridY - 16.5 * buffer);
-        templates[6] = new TetroidZ(gridX + buffer * 2, gridY - 18.5 * buffer);
+        templates[4] = new TetroidS(gridX + buffer * 2 + 1, gridY - 13.5 * buffer + 1);
+        templates[5] = new TetroidT(gridX + buffer * 2 + 1, gridY - 16.5 * buffer);
+        templates[6] = new TetroidZ(gridX + buffer * 2 + 1, gridY - 18.5 * buffer);
     }
 
     // draw the frame, templates, and all existing tetroid blocks
