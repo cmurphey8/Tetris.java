@@ -27,39 +27,59 @@ public class TetroidT extends Shape {
     //  MUTATORS
     //*******************************************************************/
 
-    public void hover(double x, double y) {
+   public void hover(double x, double y) {
         switch (rotation) {
             case 0:
-                for (int i = 0; i < 3; i++) {
-                    this.x[i] = x + i;
-                    this.y[i] = y;    
-                }
-                this.x[3] = x + 1;
+                this.x[0] = x;
+                this.y[0] = y;
+                
+                this.x[1] = x - 1;
+                this.y[1] = y;
+                
+                this.x[2] = x + 1;
+                this.y[2] = y;
+                
+                this.x[3] = x;
                 this.y[3] = y + 1;
                 break;
             case 1:
-                for (int i = 0; i < 3; i++) {
-                    this.x[i] = x;
-                    this.y[i] = y - i;    
-                }
+                this.x[0] = x;
+                this.y[0] = y;
+                
+                this.x[1] = x;
+                this.y[1] = y + 1;
+                
+                this.x[2] = x;
+                this.y[2] = y - 1;
+                
                 this.x[3] = x + 1;
-                this.y[3] = y - 1;
+                this.y[3] = y;
                 break;
             case 2: 
-                for (int i = 0; i < 3; i++) {
-                    this.x[i] = x - i;
-                    this.y[i] = y;    
-                }
-                this.x[3] = x - 1;
+                this.x[0] = x;
+                this.y[0] = y;
+                
+                this.x[1] = x - 1;
+                this.y[1] = y;
+                
+                this.x[2] = x + 1;
+                this.y[2] = y;
+                
+                this.x[3] = x;
                 this.y[3] = y - 1;
                 break;
             case 3:
-                for (int i = 0; i < 3; i++) {
-                    this.x[i] = x;
-                    this.y[i] = y + i;    
-                }
+                this.x[0] = x;
+                this.y[0] = y;
+                
+                this.x[1] = x;
+                this.y[1] = y + 1;
+                
+                this.x[2] = x;
+                this.y[2] = y - 1;
+                
                 this.x[3] = x - 1;
-                this.y[3] = y + 1;
+                this.y[3] = y;
                 break;
         }
     }
